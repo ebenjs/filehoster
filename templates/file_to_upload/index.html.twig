@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FileToUpload index{% endblock %}
+
+{% block body %}
+    <h1>FileToUpload index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Summary</th>
+                <th>Path</th>
+                <th>Size</th>
+                <th>CreatedDate</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for file_to_upload in file_to_uploads %}
+            <tr>
+                <td>{{ file_to_upload.id }}</td>
+                <td>{{ file_to_upload.name }}</td>
+                <td>{{ file_to_upload.description }}</td>
+                <td>{{ file_to_upload.summary }}</td>
+                <td>{{ file_to_upload.path }}</td>
+                <td>{{ file_to_upload.size }}</td>
+                <td>{{ file_to_upload.createdDate ? file_to_upload.createdDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('file_to_upload_show', {'id': file_to_upload.id}) }}">show</a>
+                    <a href="{{ path('file_to_upload_edit', {'id': file_to_upload.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('file_to_upload_new') }}">Create new</a>
+{% endblock %}

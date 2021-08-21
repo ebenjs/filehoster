@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New FileToUpload{% endblock %}
+
+{% block body %}
+    <h1>Create new FileToUpload</h1>
+
+    {{ include('file_to_upload/_form.html.twig') }}
+
+    <a href="{{ path('file_to_upload_index') }}">back to list</a>
+{% endblock %}

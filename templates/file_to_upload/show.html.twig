@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FileToUpload{% endblock %}
+
+{% block body %}
+    <h1>FileToUpload</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ file_to_upload.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ file_to_upload.name }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ file_to_upload.description }}</td>
+            </tr>
+            <tr>
+                <th>Summary</th>
+                <td>{{ file_to_upload.summary }}</td>
+            </tr>
+            <tr>
+                <th>Path</th>
+                <td>{{ file_to_upload.path }}</td>
+            </tr>
+            <tr>
+                <th>Size</th>
+                <td>{{ file_to_upload.size }}</td>
+            </tr>
+            <tr>
+                <th>CreatedDate</th>
+                <td>{{ file_to_upload.createdDate ? file_to_upload.createdDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('file_to_upload_index') }}">back to list</a>
+
+    <a href="{{ path('file_to_upload_edit', {'id': file_to_upload.id}) }}">edit</a>
+
+    {{ include('file_to_upload/_delete_form.html.twig') }}
+{% endblock %}
